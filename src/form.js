@@ -1,54 +1,61 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { create } from './DataStore';
 import { Notification } from './notification';
+import fields from './fields.json';
 
 export const AddProductForm = () => {
 	const [formData, updateFormData] = useState({});
 	const [message, updateMessage] = useState('');
 
-	const handleChange = (e) => {
+	useEffect(() => {
+		setFields();
+	}, []);
+
+	const setFields = () => {
+		fields.map((field) =>
+			updateFormData((apiField) => ({
+				...apiField,
+				[field.id]: field.value,
+			}))
+		);
+		const firstField = document.querySelector('input.name');
+		firstField.focus();
+		return () => {};
+	};
+
+	const handleChange = (e, id) => {
 		updateFormData({
 			...formData,
-			[e.target.name]: e.target.value,
+			[id]: e.target.value,
 		});
+		updateMessage('');
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		create(formData);
-		updateFormData({});
 		updateMessage('Product Created');
+		setFields();
 	};
 
 	return (
 		<form className="add-product-form" onSubmit={handleSubmit}>
-			<label htmlFor="name">
-				<p>Product name</p>
-				<input
-					type="text"
-					name="name"
-					onChange={handleChange}
-					value={formData.name || ''}
-				/>
-			</label>
-			<label htmlFor="regular_price">
-				<p>Price</p>
-				<input
-					type="text"
-					name="regular_price"
-					onChange={handleChange}
-					value={formData.regular_price || ''}
-				/>
-			</label>
-			<label htmlFor="sku">
-				<p>SKU</p>
-				<input
-					type="text"
-					name="sku"
-					onChange={handleChange}
-					value={formData.sku || ''}
-				/>
-			</label>
+			{fields.map((field) => (
+				<label htmlFor={field.id} key={field.id}>
+					<p>{field.name}</p>
+					<input
+						type={field.type}
+						name={field.id}
+						onChange={(e) => {
+							handleChange(e, field.id);
+						}}
+						className={field.id}
+						value={formData[field.id] || ''}
+						autoComplete="off"
+					/>
+				</label>
+			))}
+
 			<p>
 				<button type="submit" className="button button-primary">
 					Add Product

@@ -22,11 +22,5 @@
 		"id": "short_description",
 		"type": "text",
 		"value": ""
-	},
-	{
-		"name": "Stock Level",
-		"id": "stock_quantity",
-		"type": "text",
-		"value": ""
 	}
 ]
