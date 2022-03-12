@@ -1,0 +1,32 @@
+[
+	{
+		"name": "Name",
+		"id": "name",
+		"type": "text",
+		"value": ""
+	},
+	{
+		"name": "Price",
+		"id": "regular_price",
+		"type": "number",
+		"value": ""
+	},
+	{
+		"name": "SKU",
+		"id": "sku",
+		"type": "text",
+		"value": ""
+	},
+	{
+		"name": "Short Description",
+		"id": "short_description",
+		"type": "text",
+		"value": ""
+	},
+	{
+		"name": "Stock Level",
+		"id": "stock_quantity",
+		"type": "text",
+		"value": ""
+	}
+]
