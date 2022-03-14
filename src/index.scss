@@ -1,0 +1,24 @@
+.form-wrap {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+
+	.image-uploader {
+		display: flex;
+		height: 100%;
+		padding: 15px;
+		width: 400px;
+	}
+
+	.image-uploader input {
+		display: block;
+		width: 100%;
+	}
+
+	.image-uploader img {
+		max-width: 100%;
+		display: block;
+		width: auto;
+		height: auto;
+	}
+}

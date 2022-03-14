@@ -55,7 +55,6 @@ export const AddProductForm = () => {
 					/>
 				</label>
 			))}
-
 			<p>
 				<button type="submit" className="button button-primary">
 					Add Product

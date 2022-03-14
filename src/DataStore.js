@@ -8,4 +8,12 @@ const create = (data) => {
 	});
 };
 
-export { create };
+const addImage = (data) => {
+	return apiFetch({
+		path: '/wp/v2/media',
+		method: 'POST',
+		body: data,
+	});
+};
+
+export { create, addImage };
