@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { addImage } from './DataStore';
 
-export const ImageUpload = () => {
+export const ImageUpload = (props) => {
 	const [selectedImage, setselectedImage] = useState();
 
-	const setImage = (e) => {
+	const setImage = async (e) => {
 		const image = e.target.files[0];
 		const formData = new FormData();
 		formData.append('file', image);
 		formData.append('title', image.name);
 		formData.append('type', image.type);
-		addImage(formData);
+		const resp = await addImage(formData);
+		props.setImageID(resp.id);
 		setselectedImage(URL.createObjectURL(image));
 	};
 

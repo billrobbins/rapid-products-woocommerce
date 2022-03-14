@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import './index.scss';
 import { AddProductForm } from './form';
-import { ImageUpload } from './image';
 
 const RootComponent = () => {
 	return (
@@ -10,7 +9,6 @@ const RootComponent = () => {
 			<h1>Rapid Products</h1>
 			<div className="form-wrap ">
 				<AddProductForm />
-				<ImageUpload />
 			</div>
 		</>
 	);
