@@ -19,8 +19,8 @@ require_once plugin_dir_path( __FILE__ ) . '/includes/class-admin-page.php';
  /**
  * Register and enqueue JS and CSS
  */
-function wc_action_logging_scripts() {
-	if ( isset( $_GET['page'] ) && ! empty( $_GET['page'] ) && 'action-logging' !== $_GET['page'] ) {
+function rapid_products_load_scripts() {
+	if ( isset( $_GET['page'] ) && ! empty( $_GET['page'] ) && 'rapid-products' !== $_GET['page'] ) {
 		return;
 	}
 	
@@ -32,7 +32,7 @@ function wc_action_logging_scripts() {
 	$script_url = plugins_url( $script_path, __FILE__ );
 
 	wp_register_script(
-		'action-logging',
+		'rapid-products',
 		$script_url,
 		$script_asset['dependencies'],
 		$script_asset['version'],
@@ -40,15 +40,15 @@ function wc_action_logging_scripts() {
 	);
 
 	wp_register_style(
-		'action-logging',
+		'rapid-products',
 		plugins_url( '/build/index.css', __FILE__ ),
 		// Add any dependencies styles may have, such as wp-components.
 		array(),
 		filemtime( dirname( __FILE__ ) . '/build/index.css' )
 	);
 
-	wp_enqueue_script( 'action-logging' );
-	wp_enqueue_style( 'action-logging' );
+	wp_enqueue_script( 'rapid-products' );
+	wp_enqueue_style( 'rapid-products' );
 }
 
-add_action( 'admin_enqueue_scripts', 'wc_action_logging_scripts' );
+add_action( 'admin_enqueue_scripts', 'rapid_products_load_scripts' );

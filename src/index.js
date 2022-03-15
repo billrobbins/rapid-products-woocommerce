@@ -7,7 +7,9 @@ const RootComponent = () => {
 	return (
 		<>
 			<h1>Rapid Products</h1>
-			<AddProductForm />
+			<div className="form-wrap ">
+				<AddProductForm />
+			</div>
 		</>
 	);
 };

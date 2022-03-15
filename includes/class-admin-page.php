@@ -16,7 +16,7 @@ class Rapid_Product_WC_Admin_Page {
      */
     public function register_sub_menu() {
         add_submenu_page( 
-            'edit.php?post_type=product', 'Rapid Products', 'Rapid Products', 'manage_options', 'action-logging', array(&$this, 'admin_page_callback')
+            'edit.php?post_type=product', 'Rapid Products', 'Rapid Products', 'manage_options', 'rapid-products', array(&$this, 'admin_page_callback')
         );
     }
  
