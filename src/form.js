@@ -11,11 +11,14 @@ export const AddProductForm = () => {
 
 	useEffect(() => {
 		setFields();
+	}, []);
+
+	useEffect(() => {
 		updateFormData((existing) => ({
 			...existing,
 			images: [{ id: imageID }],
 		}));
-	}, []);
+	}, [imageID]);
 
 	const setFields = () => {
 		fields.map((field) =>
@@ -47,6 +50,7 @@ export const AddProductForm = () => {
 	return (
 		<form className="add-product-form" onSubmit={handleSubmit}>
 			<div className="regular-fields">
+				<p>{imageID}</p>
 				{fields.map((field) => (
 					<label htmlFor={field.id} key={field.id}>
 						<p>{field.name}</p>
@@ -67,10 +71,10 @@ export const AddProductForm = () => {
 						Add Product
 					</button>
 				</p>
+				<Notification message={message} />
 			</div>
 
 			<ImageUpload setImageID={setImageID} />
-			<Notification message={message} />
 		</form>
 	);
 };
