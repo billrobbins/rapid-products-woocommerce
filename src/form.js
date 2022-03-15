@@ -8,6 +8,7 @@ export const AddProductForm = () => {
 	const [formData, updateFormData] = useState({});
 	const [imageID, setImageID] = useState();
 	const [message, updateMessage] = useState('');
+	const [changed, updateChanged] = useState(false);
 
 	useEffect(() => {
 		setFields();
@@ -44,13 +45,13 @@ export const AddProductForm = () => {
 		e.preventDefault();
 		create(formData);
 		updateMessage('Product Created');
+		updateChanged(!changed);
 		setFields();
 	};
 
 	return (
 		<form className="add-product-form" onSubmit={handleSubmit}>
 			<div className="regular-fields">
-				<p>{imageID}</p>
 				{fields.map((field) => (
 					<label htmlFor={field.id} key={field.id}>
 						<p>{field.name}</p>
@@ -74,7 +75,7 @@ export const AddProductForm = () => {
 				<Notification message={message} />
 			</div>
 
-			<ImageUpload setImageID={setImageID} />
+			<ImageUpload setImageID={setImageID} changed={changed} />
 		</form>
 	);
 };
