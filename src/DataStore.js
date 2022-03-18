@@ -16,4 +16,16 @@ const addImage = (data) => {
 	});
 };
 
-export { create, addImage };
+const listOptions = () => {
+	return apiFetch({ path: '/rapid-products/v1/options' });
+};
+
+const editOptions = (data) => {
+	return apiFetch({
+		path: '/rapid-products/v1/options',
+		method: 'POST',
+		data,
+	});
+};
+
+export { create, addImage, listOptions, editOptions };
