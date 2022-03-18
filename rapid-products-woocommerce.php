@@ -16,6 +16,9 @@
  // Load Admin Page
 require_once plugin_dir_path( __FILE__ ) . '/includes/class-admin-page.php';
 
+ // Load REST Endpoint for Options
+ require_once plugin_dir_path( __FILE__ ) . '/includes/class-endpoints.php';
+
  /**
  * Register and enqueue JS and CSS
  */

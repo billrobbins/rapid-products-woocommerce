@@ -2,30 +2,43 @@ import React, { useState, useEffect, useRef } from 'react';
 import { addImage } from './DataStore';
 
 export const ImageUpload = (props) => {
-	const [selectedImage, setselectedImage] = useState();
-	const [uploading, setUploading] = useState('waiting');
+	const [selectedImage, setSelectedImage] = useState();
+	const [uploading, setUploading] = useState(false);
 	const fileRef = useRef();
+
+	const toggleUploading = (bol) => {
+		setUploading(bol);
+		props.setProcessing(bol);
+	};
+
+	const errorHandling = (error) => {
+		props.updateMessage(error.message);
+		props.setImageID(null);
+	};
 
 	const setImage = async (e) => {
 		const image = e.target.files[0];
-		setUploading('loading');
+		toggleUploading(true);
 		const formData = new FormData();
 		formData.append('file', image);
 		formData.append('title', image.name);
 		formData.append('type', image.type);
-		const resp = await addImage(formData);
-		setUploading('waiting');
+		const resp = await addImage(formData).catch((error) =>
+			errorHandling(error)
+		);
+		toggleUploading(false);
 		props.setImageID(resp.id);
-		setselectedImage(URL.createObjectURL(image));
+		setSelectedImage(URL.createObjectURL(image));
 	};
 
 	useEffect(() => {
 		fileRef.current.value = '';
-		setselectedImage('');
+		setSelectedImage('');
+		setUploading(false);
 	}, [props.changed]);
 
 	return (
-		<div className={'image-uploader ' + uploading}>
+		<div className={`image-uploader ${uploading ? 'loading' : 'waiting'}`}>
 			<input type="file" name="file" onChange={setImage} ref={fileRef} />
 			<p className="image-upload-instructions">
 				<span className="default">
