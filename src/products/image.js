@@ -1,36 +1,43 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { addImage } from './DataStore';
+import { addImage } from '../DataStore';
 
 export const ImageUpload = (props) => {
 	const [selectedImage, setSelectedImage] = useState();
 	const [uploading, setUploading] = useState(false);
 	const fileRef = useRef();
 
+	// Sets the loading indicator for the image and disables the add product button wile uploading
 	const toggleUploading = (bol) => {
 		setUploading(bol);
 		props.setProcessing(bol);
 	};
 
-	const errorHandling = (error) => {
-		props.updateMessage(error.message);
-		props.setImageID(null);
-	};
+	/*
+	 * Image Handler
+	 * Handles our upload indicator, sends the file to the server,
+	 * and passes the image id to AddProductForm
+	 */
 
 	const setImage = async (e) => {
 		const image = e.target.files[0];
 		toggleUploading(true);
-		const formData = new FormData();
+		const formData = new window.FormData();
 		formData.append('file', image);
 		formData.append('title', image.name);
 		formData.append('type', image.type);
-		const resp = await addImage(formData).catch((error) =>
-			errorHandling(error)
-		);
-		toggleUploading(false);
-		props.setImageID(resp.id);
-		setSelectedImage(URL.createObjectURL(image));
+		try {
+			const resp = await addImage(formData);
+			props.setImageID(resp.id);
+			setSelectedImage(URL.createObjectURL(image));
+		} catch (error) {
+			props.updateMessage(error.message);
+			props.setImageID(null);
+		} finally {
+			toggleUploading(false);
+		}
 	};
 
+	// Resets image when new product is created.
 	useEffect(() => {
 		fileRef.current.value = '';
 		setSelectedImage('');

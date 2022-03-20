@@ -2,7 +2,6 @@
 	display: flex;
 	flex-direction: row;
 	gap: 30px;
-	position: relative;
 
 	.button-holder {
 		margin-top: 15px;
@@ -42,19 +41,28 @@
 			height: auto;
 		}
 	}
+}
 
-	.notification-message {
-		background-color: rgba(0, 0, 0, 0.7);
-		padding: 5px 15px;
-		position: absolute;
-		top: -39px;
-		left: 224px;
-	}
+.rapid-products-wrap {
+	position: relative;
 
-	.notification-message P {
-		color: #fff;
-		margin: 0;
+	h1 {
+		display: inline-block;
 	}
+}
+
+.notification-message {
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 5px 15px;
+	display: inline-block;
+	position: relative;
+	top: -5px;
+	margin-left: 15px;
+}
+
+.notification-message p {
+	color: #fff;
+	margin: 0;
 }
 
 .waiting .loading-image {
@@ -71,4 +79,8 @@
 
 .loading .default {
 	display: none;
+}
+
+.options-form label {
+	display: block;
 }
