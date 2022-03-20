@@ -1,47 +1,26 @@
 [
 	{
 		"name": "Name",
-		"id": "name",
-		"value": true
+		"id": "name"
 	},
 	{
 		"name": "Price",
-		"id": "price",
-		"value": true
+		"id": "regular_price"
 	},
 	{
 		"name": "SKU",
-		"id": "sku",
-		"value": true
+		"id": "sku"
 	},
 	{
 		"name": "Short Description",
-		"id": "short_description",
-		"value": true
+		"id": "short_description"
 	},
 	{
-		"name": "Manage Stock",
-		"id": "manage_stock",
-		"value": false
-	},
-	{
-		"name": "Stock",
-		"id": "stock",
-		"value": false
-	},
-	{
-		"name": "Backorders",
-		"id": "backorders",
-		"value": false
-	},
-	{
-		"name": "Sold Individually",
-		"id": "sold_individually",
-		"value": false
+		"name": "Description",
+		"id": "description"
 	},
 	{
 		"name": "Weight",
-		"id": "weight",
-		"value": false
+		"id": "weight"
 	}
 ]

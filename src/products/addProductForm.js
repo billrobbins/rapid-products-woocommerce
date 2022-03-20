@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { create } from '../DataStore';
-import fields from './fields.json';
+import { create, listFields } from '../DataStore';
+//import fields from './fields.json';
 import { ImageUpload } from './image';
 import { Field } from './field';
 
@@ -9,12 +9,23 @@ export const AddProductForm = (props) => {
 	const [imageID, setImageID] = useState();
 	const [changed, updateChanged] = useState(false);
 	const [processing, setProcessing] = useState(false);
+	const [fields, defineFields] = useState([]);
 
 	const updateMessage = props.updateMessage;
 
 	useEffect(() => {
-		setFields();
-	}, []);
+		const loadFields = async () => {
+			const response = await listFields();
+			try {
+				defineFields(response);
+			} catch (error) {
+				updateMessage(error);
+			} finally {
+				setFields();
+			}
+		};
+		loadFields();
+	}, [props.settings]);
 
 	// Adds the imageID to formData from ImageUpload
 	useEffect(() => {
