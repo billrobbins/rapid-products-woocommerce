@@ -22,5 +22,11 @@
 		"id": "short_description",
 		"type": "text",
 		"value": ""
+	},
+	{
+		"name": "Description",
+		"id": "description",
+		"type": "textarea",
+		"value": ""
 	}
 ]

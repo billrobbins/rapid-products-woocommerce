@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react';
-import { create } from './DataStore';
-import { Notification } from './notification';
+import { create } from '../DataStore';
 import fields from './fields.json';
 import { ImageUpload } from './image';
 import { Field } from './field';
 
-export const AddProductForm = () => {
+export const AddProductForm = (props) => {
 	const [formData, updateFormData] = useState({});
 	const [imageID, setImageID] = useState();
-	const [message, updateMessage] = useState('');
 	const [changed, updateChanged] = useState(false);
 	const [processing, setProcessing] = useState(false);
+
+	const updateMessage = props.updateMessage;
 
 	useEffect(() => {
 		setFields();
 	}, []);
 
+	// Adds the imageID to formData from ImageUpload
 	useEffect(() => {
 		updateFormData((existing) => ({
 			...existing,
@@ -24,6 +25,7 @@ export const AddProductForm = () => {
 		setProcessing(false);
 	}, [imageID]);
 
+	// Prepares our fields for a product
 	const setFields = () => {
 		fields.map((field) =>
 			updateFormData((apiField) => ({
@@ -45,12 +47,17 @@ export const AddProductForm = () => {
 		updateMessage('');
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		create(formData).catch((error) => updateMessage(error));
-		updateMessage('Product Created');
-		updateChanged(!changed);
-		setFields();
+		try {
+			await create(formData);
+			updateMessage('Product Created');
+		} catch (error) {
+			updateMessage(error);
+		} finally {
+			updateChanged(!changed);
+			setFields();
+		}
 	};
 
 	return (
@@ -73,7 +80,6 @@ export const AddProductForm = () => {
 						Add Product
 					</button>
 				</p>
-				{message && <Notification message={message} />}
 			</div>
 
 			<ImageUpload
