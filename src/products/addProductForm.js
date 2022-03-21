@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { create, listFields } from '../DataStore';
-//import fields from './fields.json';
 import { ImageUpload } from './image';
 import { Field } from './field';
 
