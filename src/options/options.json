@@ -22,5 +22,21 @@
 	{
 		"name": "Weight",
 		"id": "weight"
+	},
+	{
+		"name": "Stock",
+		"id": "stock_quantity"
+	},
+	{
+		"name": "Tax Status",
+		"id": "tax_status"
+	},
+	{
+		"name": "Backorders",
+		"id": "backorders"
+	},
+	{
+		"name": "Sold Individually",
+		"id": "sold_individually"
 	}
 ]
