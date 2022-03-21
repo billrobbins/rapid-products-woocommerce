@@ -16,6 +16,27 @@ export const Field = (props) => {
 				</label>
 			);
 
+		case 'select':
+			return (
+				<label htmlFor={field.id}>
+					<p>{field.name}</p>
+					<select
+						name={field.id}
+						className={field.id}
+						value={props.formData[field.id] || ''}
+						onChange={(e) => {
+							props.handleChange(e, field.id);
+						}}
+					>
+						{field.options.map((option) => (
+							<option key={option.id} value={option.id}>
+								{option.name}
+							</option>
+						))}
+					</select>
+				</label>
+			);
+
 		default:
 			return (
 				<label htmlFor={field.id}>

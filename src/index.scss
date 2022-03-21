@@ -3,6 +3,14 @@
 	flex-direction: row;
 	gap: 30px;
 
+	select {
+		width: 100%;
+	}
+
+	textarea {
+		height: 75px;
+	}
+
 	.button-holder {
 		margin-top: 15px;
 	}
