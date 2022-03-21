@@ -84,3 +84,19 @@
 .options-form label {
 	display: block;
 }
+
+form.options-form {
+	position: absolute;
+	top: 50px;
+	right: 30px;
+	padding: 20px;
+	background-color: #ccc;
+
+	h4 {
+		margin-top: 0;
+	}
+
+	.button {
+		margin-top: 15px;
+	}
+}

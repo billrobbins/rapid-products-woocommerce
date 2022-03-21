@@ -28,4 +28,8 @@ const editOptions = (data) => {
 	});
 };
 
-export { create, addImage, listOptions, editOptions };
+const listFields = () => {
+	return apiFetch({ path: '/rapid-products/v1/options/fields' });
+};
+
+export { create, addImage, listOptions, editOptions, listFields };
