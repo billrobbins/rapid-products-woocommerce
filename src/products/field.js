@@ -37,24 +37,6 @@ export const Field = (props) => {
 				</label>
 			);
 
-		case 'boolean':
-			return (
-				<label htmlFor={field.id}>
-					<p>{field.name}</p>
-					<select
-						name={field.id}
-						className={field.id}
-						value={props.formData[field.id] || ''}
-						onChange={(e) => {
-							props.handleChange(e, field.id);
-						}}
-					>
-						<option value={true}>True</option>
-						<option value={false}>False</option>
-					</select>
-				</label>
-			);
-
 		default:
 			return (
 				<label htmlFor={field.id}>

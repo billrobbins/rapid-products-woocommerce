@@ -102,6 +102,16 @@ class Rapid_Products_WC_REST_Controller {
             array_push($response, $price);
         }
 
+        if ( $content['slug']) {
+            $slug = [
+                'name' => 'Slug',
+                'id' => 'slug',
+                'type' => 'text',
+                'value' => ''
+            ];
+            array_push($response, $slug);
+        }
+
         if ( $content['sku']) {
             $sku = [
                 'name' => 'SKU',
@@ -147,7 +157,17 @@ class Rapid_Products_WC_REST_Controller {
             $manage_stock = [
                 'name' => 'Manage Stock',
                 'id' => 'manage_stock',
-                'type' => 'boolean',
+                'type' => 'select',
+                'options' => [
+                    [
+                        'id' => true,
+                        'name' => 'True'
+                    ],
+                    [
+                        'id' => false,
+                        'name' => 'false'
+                    ]
+                ],
                 'value' => true
             ];
             array_push($response, $manage_stock);
@@ -212,8 +232,18 @@ class Rapid_Products_WC_REST_Controller {
             $sold_individually = [
                 'name' => 'Sold Individually',
                 'id' => 'sold_individually',
-                'type' => 'boolean',
-                'value' => true
+                'type' => 'select',
+                'value' => false,
+                'options' => [
+                    [
+                        'id' => true,
+                        'name' => 'True'
+                    ],
+                    [
+                        'id' => false,
+                        'name' => 'false'
+                    ]
+                ],
             ];
             array_push($response, $sold_individually);
         }

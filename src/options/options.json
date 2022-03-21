@@ -8,6 +8,10 @@
 		"id": "regular_price"
 	},
 	{
+		"name": "Slug",
+		"id": "slug"
+	},
+	{
 		"name": "SKU",
 		"id": "sku"
 	},
