@@ -24,23 +24,23 @@
 		"id": "description"
 	},
 	{
+		"name": "Category",
+		"id": "category"
+	},
+	{
 		"name": "Weight",
 		"id": "weight"
 	},
 	{
-		"name": "Stock",
-		"id": "stock_quantity"
-	},
-	{
-		"name": "Tax Status",
-		"id": "tax_status"
-	},
-	{
-		"name": "Backorders",
-		"id": "backorders"
+		"name": "Manage Stock?",
+		"id": "manage_stock"
 	},
 	{
 		"name": "Sold Individually",
 		"id": "sold_individually"
+	},
+	{
+		"name": "Tax Status",
+		"id": "tax_status"
 	}
 ]

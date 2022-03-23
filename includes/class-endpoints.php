@@ -80,6 +80,17 @@ class Rapid_Products_WC_REST_Controller {
 
         $content = get_option( 'rapid_products_options' );
 
+        $tf = [
+            [
+                'id' => true,
+                'name' => 'Yes'
+            ],
+            [
+                'id' => false,
+                'name' => 'No'
+            ]
+        ];
+
         $response = [];
 
         if ( $content['name']) {
@@ -143,6 +154,37 @@ class Rapid_Products_WC_REST_Controller {
             array_push($response, $description);
         }
 
+        if ( $content['category']) {
+
+            $cats = get_terms([
+                'taxonomy' => 'product_cat',
+                'hide_empty' => false,
+             ]);
+
+            foreach ($cats as $cat) {
+                $cat_list[] = [
+                    'id' => $cat->term_id,
+                    'name' => $cat->name
+                ];
+            }
+
+            $empty = [
+                'id' => '',
+                'name' => ''
+            ];
+
+            array_unshift($cat_list, $empty);
+
+            $category = [
+                'name' => 'Category',
+                'id' => 'category',
+                'type' => 'select',
+                'value' => '',
+                'options' => $cat_list
+            ];
+            array_push($response, $category);
+        }
+
         if ( $content['weight']) {
             $weight = [
                 'name' => 'Weight',
@@ -153,22 +195,14 @@ class Rapid_Products_WC_REST_Controller {
             array_push($response, $weight);
         }
 
-        // manage_stock must be passed in order to set the stock quantity.
-        if ( $content['stock_quantity']) {
+        // stock_quantity and backorders require manage_stock == true
+        if ( $content['manage_stock']) {
             $manage_stock = [
                 'name' => 'Manage Stock',
                 'id' => 'manage_stock',
                 'type' => 'select',
-                'options' => [
-                    [
-                        'id' => true,
-                        'name' => 'True'
-                    ],
-                    [
-                        'id' => false,
-                        'name' => 'false'
-                    ]
-                ],
+                'required' => true,
+                'options' => $tf,
                 'value' => true
             ];
             array_push($response, $manage_stock);
@@ -179,33 +213,6 @@ class Rapid_Products_WC_REST_Controller {
                 'value' => ''
             ];
             array_push($response, $stock_quantity);
-        }
-
-        if ( $content['tax_status']) {
-            $tax_status = [
-                'name' => 'Tax Status',
-                'id' => 'tax_status',
-                'type' => 'select',
-                'value' => '',
-                'options' => [
-                    [
-                        'id' => 'taxable',
-                        'name' => 'Taxable'
-                    ],
-                    [
-                        'id' => 'none',
-                        'name' => 'None'
-                    ],
-                    [
-                        'id' => 'shipping',
-                        'name' => 'Shipping'
-                    ],
-                ]
-            ];
-            array_push($response, $tax_status);
-        }
-
-        if ( $content['backorders']) {
             $backorders = [
                 'name' => 'Backorders',
                 'id' => 'backorders',
@@ -235,18 +242,33 @@ class Rapid_Products_WC_REST_Controller {
                 'id' => 'sold_individually',
                 'type' => 'select',
                 'value' => false,
-                'options' => [
-                    [
-                        'id' => true,
-                        'name' => 'True'
-                    ],
-                    [
-                        'id' => false,
-                        'name' => 'false'
-                    ]
-                ],
+                'options' => $tf,
             ];
             array_push($response, $sold_individually);
+        }
+
+        if ( $content['tax_status']) {
+            $tax_status = [
+                'name' => 'Tax Status',
+                'id' => 'tax_status',
+                'type' => 'select',
+                'value' => '',
+                'options' => [
+                    [
+                        'id' => 'taxable',
+                        'name' => 'Taxable'
+                    ],
+                    [
+                        'id' => 'none',
+                        'name' => 'None'
+                    ],
+                    [
+                        'id' => 'shipping',
+                        'name' => 'Shipping'
+                    ],
+                ]
+            ];
+            array_push($response, $tax_status);
         }
 
         return $response;
