@@ -50,6 +50,7 @@ export const Field = (props) => {
 						className={field.id}
 						value={props.formData[field.id] || ''}
 						autoComplete="off"
+						required={field.required}
 					/>
 				</label>
 			);
