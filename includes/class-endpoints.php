@@ -20,12 +20,12 @@ class Rapid_Products_WC_REST_Controller {
             array(
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => array( $this, 'read_option' ),
-                'permission_callback' => $this->get_options_permissions_check
+                'permission_callback' => array( $this, 'get_options_permissions_check' )
             ),
             array(
                 'methods' => WP_REST_Server::EDITABLE,
                 'callback' => array( $this, 'edit_option' ),
-                'permission_callback' => $this->get_options_permissions_check
+                'permission_callback' => array( $this, 'get_options_permissions_check' )
             ),
         ) );
 
@@ -33,7 +33,7 @@ class Rapid_Products_WC_REST_Controller {
             array(
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => array( $this, 'load_fields' ),
-                'permission_callback' => $this->get_options_permissions_check
+                'permission_callback' => array( $this, 'get_options_permissions_check' )
             ),
         ) );
     }
@@ -87,7 +87,8 @@ class Rapid_Products_WC_REST_Controller {
                 'name' => 'Name',
                 'id' => 'name',
                 'type' => 'text',
-                'value' => ''
+                'value' => '',
+                'required' => true
             ];
             array_push($response, $name);
         }
