@@ -49,7 +49,8 @@ export const ImageUpload = (props) => {
 			<input type="file" name="file" onChange={setImage} ref={fileRef} />
 			<p className="image-upload-instructions">
 				<span className="default">
-					Click to select a file, or drag it here.
+					Click to select a file, or drag it here. <br /> PNG, JPG,
+					GIF
 				</span>
 				<span className="loading-image">Uploading image.</span>
 			</p>

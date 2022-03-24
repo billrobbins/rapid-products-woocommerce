@@ -49,11 +49,19 @@ export const AddProductForm = (props) => {
 		return () => {};
 	};
 
-	const handleChange = (e, id) => {
-		updateFormData({
-			...formData,
-			[id]: e.target.value,
-		});
+	const handleChange = (e, name) => {
+		if (name === 'category') {
+			updateFormData({
+				...formData,
+				category: e.target.value,
+				categories: [{ id: e.target.value }],
+			});
+		} else {
+			updateFormData({
+				...formData,
+				[name]: e.target.value,
+			});
+		}
 		updateMessage('');
 	};
 

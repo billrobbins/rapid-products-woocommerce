@@ -4,7 +4,7 @@
  * Plugin Name:       Rapid Products for WooCommerce
  * Plugin URI:        https://github.com/billrobbins/rapid-products-woocommerce
  * Description:       A simple interface to quickly create WooCommerce products.
- * Version:           0.0
+ * Version:           0.1
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Bill Robbins
