@@ -93,16 +93,16 @@ class Rapid_Products_WC_REST_Controller {
 
         $response = [];
 
-        if ( $content['name']) {
-            $name = [
-                'name' => 'Name',
-                'id' => 'name',
-                'type' => 'text',
-                'value' => '',
-                'required' => true
-            ];
-            array_push($response, $name);
-        }
+        // Every product needs a name
+        $name = [
+            'name' => 'Name',
+            'id' => 'name',
+            'type' => 'text',
+            'value' => '',
+            'required' => true
+        ];
+        array_push($response, $name);
+        
 
         if ( $content['regular_price']) {
             $price = [
@@ -271,7 +271,7 @@ class Rapid_Products_WC_REST_Controller {
             array_push($response, $tax_status);
         }
 
-        return $response;
+        return apply_filters( 'rapid_products_form_fields', $response );
     
     }
  

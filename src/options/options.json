@@ -1,9 +1,5 @@
 [
 	{
-		"name": "Name",
-		"id": "name"
-	},
-	{
 		"name": "Price",
 		"id": "regular_price"
 	},
