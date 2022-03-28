@@ -8,7 +8,7 @@ This plugin provides a customizable form for creating products in the admin. You
 
 ## Development
 
-To work with this plugin, you'll need to use Docker. Once it is installed clone the repository and run `npm install`. Then you can get started with these commands.
+To work with this plugin, you'll need to use Docker. Once it is installed clone the repository. Then you can get started with these commands.
 
 ```
 npm install
