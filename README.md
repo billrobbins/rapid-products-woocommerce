@@ -6,10 +6,9 @@ This plugin provides a customizable form for creating products in the admin. You
 
 ![rapid-products-ui](https://user-images.githubusercontent.com/1138631/160152349-90fbb688-5f15-4ea2-90a8-404b2bd9816d.png)
 
-
 ## Development
 
-To work with this plugin, you'll need to use Docker. Once it is installed clone the repository and run `npm install`.  Then you can get started with these commands.
+To work with this plugin, you'll need to use Docker. Once it is installed clone the repository and run `npm install`. Then you can get started with these commands.
 
 ```
 npm install
