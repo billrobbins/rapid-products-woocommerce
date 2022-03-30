@@ -46,7 +46,6 @@ export const AddProductForm = (props) => {
 		setProcessing(false);
 		const firstField = document.querySelector('input.name');
 		firstField.focus();
-		return () => {};
 	};
 
 	const handleChange = (e, name) => {
