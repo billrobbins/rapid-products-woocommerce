@@ -70,11 +70,10 @@ export const AddProductForm = (props) => {
 		try {
 			await create(formData);
 			updateMessage('Product Created');
-		} catch (error) {
-			updateMessage(error);
-		} finally {
 			updateChanged(!changed);
 			setFields();
+		} catch (error) {
+			updateMessage(error.message);
 		}
 	};
 

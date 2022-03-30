@@ -239,7 +239,7 @@ class Rapid_Products_WC_REST_Controller {
 				'name'    => 'Backorders',
 				'id'      => 'backorders',
 				'type'    => 'select',
-				'value'   => '',
+				'value'   => 'no',
 				'options' => array(
 					array(
 						'id'   => 'no',
@@ -274,7 +274,7 @@ class Rapid_Products_WC_REST_Controller {
 				'name'    => 'Tax Status',
 				'id'      => 'tax_status',
 				'type'    => 'select',
-				'value'   => '',
+				'value'   => 'taxable',
 				'options' => array(
 					array(
 						'id'   => 'taxable',

@@ -20,12 +20,20 @@ export const ImageUpload = (props) => {
 
 	const setImage = async (e) => {
 		const image = e.target.files[0];
+
+		// This checks the file type so only allowed images will be uploaded.
+		const allowed = ['image/jpeg', 'image/png', 'image/gif'];
+		if (!allowed.includes(image.type)) {
+			props.updateMessage('This file type is not allowed');
+			return;
+		}
 		toggleUploading(true);
 		const formData = new window.FormData();
 		formData.append('file', image);
 		formData.append('title', image.name);
 		formData.append('type', image.type);
 		try {
+			props.updateMessage('');
 			const resp = await addImage(formData);
 			props.setImageID(resp.id);
 			setSelectedImage(URL.createObjectURL(image));
