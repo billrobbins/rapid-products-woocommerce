@@ -1,4 +1,11 @@
+/**
+ * External dependencies
+ */
 import { useState, useEffect } from 'react';
+
+/**
+ * Internal dependencies
+ */
 import { listOptions, editOptions } from '../DataStore';
 import fields from './options.json';
 import { Checkbox } from './checkbox';

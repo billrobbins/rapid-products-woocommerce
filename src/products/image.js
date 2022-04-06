@@ -1,4 +1,11 @@
+/**
+ * External dependencies
+ */
 import React, { useState, useEffect, useRef } from 'react';
+
+/**
+ * Internal dependencies
+ */
 import { addImage } from '../DataStore';
 
 export const ImageUpload = (props) => {
@@ -17,7 +24,6 @@ export const ImageUpload = (props) => {
 	 * Handles our upload indicator, sends the file to the server,
 	 * and passes the image id to AddProductForm
 	 */
-
 	const setImage = async (e) => {
 		const image = e.target.files[0];
 

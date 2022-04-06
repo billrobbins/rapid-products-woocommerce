@@ -83,7 +83,7 @@ class Rapid_Products_WC_REST_Controller {
 
 		$options = $request['options'];
 
-		update_option( 'rapid_products_options', $options );
+		update_option( 'rapid_products_options', $options, '', false );
 
 		$content = get_option( 'rapid_products_options' );
 

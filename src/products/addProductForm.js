@@ -1,4 +1,11 @@
+/**
+ * External dependencies
+ */
 import { useState, useEffect } from 'react';
+
+/**
+ * Internal dependencies
+ */
 import { create, listFields } from '../DataStore';
 import { ImageUpload } from './image';
 import { Field } from './field';
