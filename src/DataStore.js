@@ -1,3 +1,6 @@
+/**
+ * External dependencies
+ */
 import apiFetch from '@wordpress/api-fetch';
 
 const create = (data) => {

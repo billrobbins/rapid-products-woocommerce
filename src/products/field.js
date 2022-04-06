@@ -1,3 +1,6 @@
+/**
+ * Internal dependencies
+ */
 import { InputField, TextAreaField, SelectField } from './fieldComponents';
 
 export const Field = (props) => {

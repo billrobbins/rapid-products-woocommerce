@@ -1,5 +1,12 @@
+/**
+ * External dependencies
+ */
 import React, { useState } from 'react';
 import { render } from 'react-dom';
+
+/**
+ * Internal dependencies
+ */
 import './index.scss';
 import { AddProductForm } from './products/addProductForm';
 import { Notification } from './notification';
