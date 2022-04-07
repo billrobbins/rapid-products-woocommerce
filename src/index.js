@@ -19,7 +19,7 @@ const RootComponent = () => {
 		<>
 			<h1>Rapid Products</h1>
 			{message && <Notification message={message} />}
-			<div className="form-wrap ">
+			<div className="form-wrap">
 				<AddProductForm
 					updateMessage={updateMessage}
 					settings={settings}

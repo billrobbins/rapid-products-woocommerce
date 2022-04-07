@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
  * Internal dependencies
  */
 import { create, listFields } from '../DataStore';
-import { ImageUpload } from './image';
+import { ImageUpload } from './imageUpload';
 import { Field } from './field';
 
 export const AddProductForm = (props) => {
@@ -45,14 +45,21 @@ export const AddProductForm = (props) => {
 	// Prepares our fields for a product
 	const setFields = () => {
 		fields.map((field) =>
-			updateFormData((apiField) => ({
-				...apiField,
+			updateFormData(() => ({
 				[field.id]: field.value,
 			}))
 		);
 		setProcessing(false);
 		const firstField = document.querySelector('input.name');
 		firstField.focus();
+	};
+
+	// Handles fields that are grouped together inside formData
+	const groupChange = (id, values) => {
+		updateFormData({
+			...formData,
+			[id]: values,
+		});
 	};
 
 	const handleChange = (e, name) => {
@@ -92,6 +99,8 @@ export const AddProductForm = (props) => {
 						field={field}
 						handleChange={handleChange}
 						formData={formData}
+						groupChange={groupChange}
+						changed={changed}
 					/>
 				))}
 				<p className="button-holder">

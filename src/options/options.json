@@ -24,10 +24,6 @@
 		"id": "category"
 	},
 	{
-		"name": "Weight",
-		"id": "weight"
-	},
-	{
 		"name": "Manage Stock?",
 		"id": "manage_stock"
 	},
@@ -38,5 +34,13 @@
 	{
 		"name": "Tax Status",
 		"id": "tax_status"
+	},
+	{
+		"name": "Weight",
+		"id": "weight"
+	},
+	{
+		"name": "Dimensions",
+		"id": "dimensions"
 	}
 ]

@@ -101,7 +101,13 @@ class Rapid_Products_WC_REST_Controller {
 
 		$content = get_option( 'rapid_products_options' );
 
+		$empty = array(
+			'id'   => '',
+			'name' => '',
+		);
+
 		$tf = array(
+			$empty,
 			array(
 				'id'   => true,
 				'name' => 'Yes',
@@ -190,11 +196,6 @@ class Rapid_Products_WC_REST_Controller {
 				);
 			}
 
-			$empty = array(
-				'id'   => '',
-				'name' => '',
-			);
-
 			array_unshift( $cat_list, $empty );
 
 			$category = array(
@@ -205,16 +206,6 @@ class Rapid_Products_WC_REST_Controller {
 				'options' => $cat_list,
 			);
 			array_push( $response, $category );
-		}
-
-		if ( $content['weight'] ) {
-			$weight = array(
-				'name'  => 'Weight',
-				'id'    => 'weight',
-				'type'  => 'number',
-				'value' => '',
-			);
-			array_push( $response, $weight );
 		}
 
 		// stock_quantity and backorders require manage_stock == true.
@@ -241,6 +232,7 @@ class Rapid_Products_WC_REST_Controller {
 				'type'    => 'select',
 				'value'   => 'no',
 				'options' => array(
+					$empty,
 					array(
 						'id'   => 'no',
 						'name' => 'No',
@@ -276,6 +268,7 @@ class Rapid_Products_WC_REST_Controller {
 				'type'    => 'select',
 				'value'   => 'taxable',
 				'options' => array(
+					$empty,
 					array(
 						'id'   => 'taxable',
 						'name' => 'Taxable',
@@ -291,6 +284,46 @@ class Rapid_Products_WC_REST_Controller {
 				),
 			);
 			array_push( $response, $tax_status );
+		}
+
+		if ( $content['weight'] ) {
+			$weight = array(
+				'name'  => 'Weight',
+				'id'    => 'weight',
+				'type'  => 'number',
+				'value' => '',
+			);
+			array_push( $response, $weight );
+		}
+
+		if ( $content['dimensions'] ) {
+			$dimensions = array(
+				'name'    => 'Dimensions',
+				'id'      => 'dimensions',
+				'type'    => 'group',
+				'value'   => array(),
+				'options' => array(
+					array(
+						'name'  => 'Length',
+						'id'    => 'length',
+						'type'  => 'text',
+						'value' => '',
+					),
+					array(
+						'name'  => 'Width',
+						'id'    => 'width',
+						'type'  => 'text',
+						'value' => '',
+					),
+					array(
+						'name'  => 'Height',
+						'id'    => 'height',
+						'type'  => 'text',
+						'value' => '',
+					),
+				),
+			);
+			array_push( $response, $dimensions );
 		}
 
 		return apply_filters( 'rapid_products_form_fields', $response );
