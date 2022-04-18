@@ -3,6 +3,10 @@
 	flex-direction: row;
 	gap: 30px;
 
+	.regular-fields {
+		width: 300px;
+	}
+
 	select,
 	input,
 	textarea {
@@ -13,8 +17,23 @@
 		height: 75px;
 	}
 
+	.field-dimensions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+
+		label {
+			flex: 1;
+		}
+	}
+
+	.field-dimensions > p {
+		display: none;
+	}
+
 	.button-holder {
 		margin-top: 15px;
+		clear: both;
 	}
 
 	.image-uploader {
