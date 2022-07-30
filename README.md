@@ -12,8 +12,8 @@ To work with this plugin, you'll need to use Docker. Once it is installed clone 
 
 ```
 npm install
-npm start
 npx wp-env start
+npm start
 ```
 
-When you're ready, you can run `npm build` to create a distributable build.
+The site will be available at http://localhost:8888 with the username: `admin` and password: `password`.
