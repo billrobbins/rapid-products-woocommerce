@@ -82,7 +82,7 @@ export const AddProductForm = (props) => {
 		e.preventDefault();
 		try {
 			await create(formData);
-			updateMessage('Product Created');
+			updateMessage('Product Created:  ' + formData.name);
 			updateChanged(!changed);
 			setFields();
 		} catch (error) {
