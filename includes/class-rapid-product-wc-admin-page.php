@@ -19,7 +19,7 @@ class Rapid_Product_WC_Admin_Page {
 	 *
 	 * @return void
 	 */
-	public function __construct() {
+	private function __construct() {
 		add_action( 'admin_menu', array( &$this, 'register_sub_menu' ) );
 	}
 
@@ -28,7 +28,7 @@ class Rapid_Product_WC_Admin_Page {
 	 *
 	 * @return void
 	 */
-	public function register_sub_menu() {
+	private function register_sub_menu() {
 		add_submenu_page(
 			'edit.php?post_type=product',
 			'Rapid Products',
@@ -44,7 +44,7 @@ class Rapid_Product_WC_Admin_Page {
 	 *
 	 * @return void
 	 */
-	public function admin_page_callback() {
+	private function admin_page_callback() {
 		echo '<div class="rapid-products-wrap"></div>';
 	}
 
