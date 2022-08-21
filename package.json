@@ -17,7 +17,8 @@
 		"packages-update": "wp-scripts packages-update",
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
-		"test:unit": "wp-scripts test-unit-js"
+		"test:unit": "wp-scripts test-unit-js",
+		"build-zip": "mkdir ./working && cp -r ./rapid-products-woocommerce.php ./rapid-products-woocommerce/rapid-products-woocommerce.php && cp -r ./includes ./rapid-products-woocommerce/includes && cp -r ./build ./rapid-products-woocommerce/build && zip -r ./rapid-products-woocommerce.zip ./rapid-products-woocommerce && rm -r ./rapid-products-woocommerce"
 	},
 	"devDependencies": {
 		"@woocommerce/dependency-extraction-webpack-plugin": "1.6.0",
