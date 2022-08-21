@@ -18,7 +18,7 @@ class Rapid_Products_WC_REST_Controller {
 	 *
 	 * @return void
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->namespace    = 'rapid-products/v1';
 		$this->options_name = 'options';
 	}
@@ -28,7 +28,7 @@ class Rapid_Products_WC_REST_Controller {
 	 *
 	 * @return void
 	 */
-	private function register_routes() {
+	public function register_routes() {
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->options_name,
@@ -65,7 +65,7 @@ class Rapid_Products_WC_REST_Controller {
 	 * @param  WP_REST_Request $request Current request.
 	 * @return  option content.
 	 */
-	private function read_option( $request ) {
+	public function read_option( $request ) {
 
 		$content = get_option( 'rapid_products_options' );
 
@@ -79,7 +79,7 @@ class Rapid_Products_WC_REST_Controller {
 	 * @param WP_REST_Request $request Current request.
 	 * @return option content.
 	 */
-	private function edit_option( $request ) {
+	public function edit_option( $request ) {
 
 		$options = $request['options'];
 
@@ -97,7 +97,7 @@ class Rapid_Products_WC_REST_Controller {
 	 * @param WP_REST_Request $request Current request.
 	 * @return option content.
 	 */
-	private function load_fields( $request ) {
+	public function load_fields( $request ) {
 
 		$content = get_option( 'rapid_products_options' );
 
@@ -335,7 +335,7 @@ class Rapid_Products_WC_REST_Controller {
 	 *
 	 * @return HTTP status code
 	 */
-	private function authorization_status_code() {
+	public function authorization_status_code() {
 
 		$status = 401;
 
@@ -351,7 +351,7 @@ class Rapid_Products_WC_REST_Controller {
 	 *
 	 * @return boolean for permissions
 	 */
-	private function get_options_permissions_check() {
+	public function get_options_permissions_check() {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new WP_Error( 'rest_forbidden', esc_html__( 'You cannot view these.  Sorry!' ), array( 'status' => $this->authorization_status_code() ) );
 		}
