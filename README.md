@@ -17,3 +17,13 @@ npm start
 ```
 
 The site will be available at http://localhost:8888 with the username: `admin` and password: `password`.
+
+## Distribution
+
+Once you're ready to create a distributable package use this command:
+
+```
+npm run build-zip
+```
+
+That will build a ZIP file that's ready to install as a WordPress plugin.
